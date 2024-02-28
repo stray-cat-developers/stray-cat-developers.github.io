@@ -12,6 +12,6 @@
 
 
 ### Products
-- lutrogale-otter: Permission check application
-- giant-otter: collects and shows several swagger apis.
-- JPEG and PNG images optimized application
+- [lutrogale-otter](https://github.com/stray-cat-developers/lutrogale-otter): Permission check application
+- [giant-otter](https://github.com/stray-cat-developers/giant-otter): collects and shows several swagger apis.
+- [sea-otter](https://github.com/stray-cat-developers/sea-otter): JPEG and PNG images optimized application
