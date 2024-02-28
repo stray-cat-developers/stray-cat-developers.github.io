@@ -11,6 +11,9 @@
 ### Products
 We build open-source utilities for business that fall into the ambiguous category of "nice-to-have, not need-to-have."
 
+### contributor 
+- fennec-fox
+- akiten-io
 
 #### Repo
 - [lutrogale-otter](https://github.com/stray-cat-developers/lutrogale-otter): Permission check application
