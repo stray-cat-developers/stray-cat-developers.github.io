@@ -1,5 +1,3 @@
-## Stray cat developers
-
 **We Are Ordinary Developers with Extraordinary Dreams:** Open-Source Tools That Will Change the World
 
 **We are ordinary developers.** But our dreams are anything but ordinary. We have a grand vision to create open-source tools that will transform the world.
@@ -10,8 +8,11 @@
 
 **Join us!** Share our vision and support our efforts. Together, we can create a better world.
 
-
 ### Products
+We build open-source utilities for business that fall into the ambiguous category of "nice-to-have, not need-to-have."
+
+
+#### Repo
 - [lutrogale-otter](https://github.com/stray-cat-developers/lutrogale-otter): Permission check application
 - [giant-otter](https://github.com/stray-cat-developers/giant-otter): collects and shows several swagger apis.
 - [sea-otter](https://github.com/stray-cat-developers/sea-otter): JPEG and PNG images optimized application
