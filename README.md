@@ -9,13 +9,21 @@
 **Join us!** Share our vision and support our efforts. Together, we can create a better world.
 
 ### Products
-We build open-source utilities for business that fall into the ambiguous category of "nice-to-have, not need-to-have."
+We build open-source utilities for business that fall into the ambiguous category of "nice-to-have, not need-to-have."  
 
 ### contributor 
 - fennec-fox
 - akiten-io
 
 #### Repo
-- [lutrogale-otter](https://github.com/stray-cat-developers/lutrogale-otter): Permission check application
+##### available
+- [lutrogale-otter](https://github.com/stray-cat-developers/lutrogale-otter): Permission check application  
 - [giant-otter](https://github.com/stray-cat-developers/giant-otter): collects and shows several swagger apis.
 - [sea-otter](https://github.com/stray-cat-developers/sea-otter): JPEG and PNG images optimized application
+- [catnip-fortress](https://github.com/stray-cat-developers/catnip-fortress): Admin built on Vue3 and Typescript.
+  - You can use it by configuring the system with two projects (lutrogale-otter, birman-cat).
+- [birman-cat](https://github.com/stray-cat-developers/birman-cat): Simple Admin Account Management api application.
+- [river-otter](https://github.com/stray-cat-developers/river-otter): Holiday management api application. (KR, US)
+##### developing
+- munchkin-cat: Template-based SMS, email, and Kakaotalk transmission application.
+- [purry-talkie](https://github.com/stray-cat-developers/purry-talkie): Simple Customer consultation chat application.
