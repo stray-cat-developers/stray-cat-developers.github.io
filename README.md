@@ -12,8 +12,8 @@
 We build open-source utilities for business that fall into the ambiguous category of "nice-to-have, not need-to-have."  
 
 ### contributor 
-- fennec-fox
-- akiten-io
+- [fennec-fox](https://github.com/fennec-fox)
+- [akiten-io](https://github.com/akiten-io)
 
 #### Repo
 ##### available
