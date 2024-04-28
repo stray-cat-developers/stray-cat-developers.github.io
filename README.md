@@ -27,3 +27,9 @@ We build open-source utilities for business that fall into the ambiguous categor
 ##### developing
 - munchkin-cat: Template-based SMS, email, and Kakaotalk transmission application.
 - [purry-talkie](https://github.com/stray-cat-developers/purry-talkie): Simple Customer consultation chat application.
+
+
+#### Milestones
+![Milestones](https://github.com/stray-cat-developers/stray-cat-developers.github.io/assets/8306527/0cf06905-d6aa-44a4-a8d1-273e1127ce65)
+
+
