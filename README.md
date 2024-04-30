@@ -16,6 +16,7 @@ We build open-source utilities for business that fall into the ambiguous categor
 - [akiten-io](https://github.com/akiten-io)
 
 #### Repo
+[stray cat developers](https://github.com/stray-cat-developers)
 ##### available
 - [lutrogale-otter](https://github.com/stray-cat-developers/lutrogale-otter): Permission check application  
 - [giant-otter](https://github.com/stray-cat-developers/giant-otter): collects and shows several swagger apis.
