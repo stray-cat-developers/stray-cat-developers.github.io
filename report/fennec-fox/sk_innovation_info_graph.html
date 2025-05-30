@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK이노베이션 재무 현황 및 미래 전략 분석 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .chart-container {
+                height: 380px;
+            }
+        }
+        .kpi-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #118AB2;
+        }
+        .kpi-label {
+            font-size: 0.875rem;
+            color: #073B4C;
+        }
+        .section-title {
+            color: #073B4C;
+            border-bottom: 3px solid #FF6B6B;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-left: 2px solid #118AB2;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -0.375rem;
+            top: 0.25rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background-color: #FF6B6B;
+            border: 2px solid #FFFFFF;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-gradient-to-r from-[#073B4C] to-[#118AB2] py-10 text-white text-center sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">SK이노베이션: 재무 현황 분석 및 미래 성장 전략</h1>
+            <p class="text-lg md:text-xl">데이터 기반 심층 진단 인포그래픽</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-6 mt-8">
+        
+        <section id="introduction" class="card">
+            <h2 class="text-2xl font-bold section-title">들어가며: 위기 속 기회, SK이노베이션의 현주소</h2>
+            <p class="text-md mb-3">본 인포그래픽은 SK이노베이션의 최근 재무 상태, 핵심 사업 부문의 성과, SK E&S 합병의 전략적 의미, 배터리 자회사 SK온이 직면한 도전과제와 턴어라운드 전략, 그리고 그룹 전체의 부채 문제 해결 방안을 시각적으로 분석합니다. SK이노베이션은 수익성 악화와 부채 증가라는 재무적 압박에 직면해 있으며, 특히 SK온의 실적 개선이 그룹 미래에 결정적인 영향을 미치고 있습니다. 이 자료는 제공된 심층 분석 보고서를 바탕으로 SK이노베이션이 현재의 위기를 극복하고 지속 가능한 성장 기반을 마련하기 위한 전략적 방향을 데이터 중심으로 제시합니다.</p>
+            <p class="text-sm text-gray-600">모든 정보는 제공된 "SK이노베이션 재무 상황 분석 및 개선 전략 보고서"에 기반합니다.</p>
+        </section>
+
+        <section id="ski-financials" class="card">
+            <h2 class="text-2xl font-bold section-title">SK이노베이션 연결 재무 건전성</h2>
+            <p class="mb-6 text-md">SK이노베이션은 최근 몇 년간 매출 감소와 함께 영업이익이 급감하며 수익성에 큰 타격을 입었습니다. 2025년 1분기에는 SK E&S 연결 편입 효과에도 불구하고 영업손실을 기록했습니다. 총자산은 증가했지만, 부채 또한 가파르게 상승하여 재무 안정성 지표인 부채비율이 높아진 상황입니다. 이는 주로 배터리 사업(SK온)에 대한 대규모 투자와 지속적인 자금 소요 때문으로 분석됩니다.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="chart-container">
+                    <canvas id="skiRevenueProfitChart"></canvas>
+                    <p class="text-center text-sm mt-2 text-gray-600">연도별 매출액 및 영업이익 추이</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="skiDebtRatioChart"></canvas>
+                    <p class="text-center text-sm mt-2 text-gray-600">연도별 총자산, 총부채 및 부채비율 추이</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center mt-4">
+                <div>
+                    <p class="kpi-value">21.1조원</p>
+                    <p class="kpi-label">2025년 1분기 매출액</p>
+                </div>
+                <div>
+                    <p class="kpi-value text-[#FF6B6B]">(446억원)</p>
+                    <p class="kpi-label">2025년 1분기 영업손실</p>
+                </div>
+                <div>
+                    <p class="kpi-value">75.4조원</p>
+                    <p class="kpi-label">2025년 1분기 총부채</p>
+                </div>
+                <div>
+                    <p class="kpi-value text-[#FF6B6B]">206.6%</p>
+                    <p class="kpi-label">2025년 1분기 부채비율</p>
+                </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-700">SK이노베이션의 재무 지표는 SK온의 성과에 크게 좌우되며, 그룹 전체의 수익성 개선과 부채 관리가 시급한 과제임을 보여줍니다. SK E&S 합병 효과가 본격화되고 SK온의 턴어라운드가 이루어진다면 재무 구조 개선을 기대할 수 있습니다. (출처: 보고서 II.A)</p>
+        </section>
+
+        <section id="portfolio-performance" class="card">
+            <h2 class="text-2xl font-bold section-title">주요 사업 부문별 성과 (2025년 1분기)</h2>
+            <p class="mb-6 text-md">2025년 1분기 SK이노베이션의 사업 부문별 실적은 혼조세를 보였습니다. 윤활유, 석유개발, E&S 사업은 견조한 이익을 기록하며 그룹 실적에 기여했지만, 화학 사업은 시황 악화로 적자를 지속했고, 배터리 사업(SK온)은 막대한 영업손실을 기록하며 그룹 전체 수익성을 크게 잠식했습니다. 석유 사업은 유가 및 정제마진 약세로 이익이 감소했습니다. SK온의 실적 개선이 그룹 포트폴리오 안정성에 얼마나 중요한지 명확히 드러납니다.</p>
+            <div class="chart-container mx-auto" style="height: 400px; max-width: 700px;">
+                <canvas id="segmentPerformanceChart"></canvas>
+            </div>
+            <p class="mt-6 text-sm text-gray-700">위 차트는 2025년 1분기 각 사업 부문의 영업이익 또는 손실 규모를 보여줍니다. SK온과 화학 부문의 큰 폭의 적자가 다른 사업부의 흑자를 상쇄하여 그룹 전체 영업손실에 결정적인 영향을 미쳤습니다. (출처: 보고서 III.B)</p>
+        </section>
+
+        <section id="sk-ens-merger" class="card">
+            <h2 class="text-2xl font-bold section-title">SK E&S 합병: 시너지와 통합 과제</h2>
+            <p class="mb-6 text-md">SK이노베이션과 SK E&S의 합병(2024년 11월 1일 합병기일)은 전통 에너지부터 미래 에너지까지 아우르는 통합 에너지 기업으로의 도약을 목표로 합니다. SK E&S의 안정적인 현금흐름은 SK온 투자 부담 완화 및 그룹 재무 안정성 강화에 기여할 것으로 기대됩니다. 합병을 통해 연간 약 2.1조원 이상의 EBITDA 시너지 창출이 목표입니다.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="text-center md:text-left">
+                    <p class="text-lg font-semibold text-[#073B4C] mb-1">예상 연간 EBITDA 시너지 (2030년까지)</p>
+                    <p class="text-5xl font-bold text-[#06D6A0] mb-2">2.1조원+</p>
+                    <p class="text-sm text-gray-600">석유/가스 약 0.5조원, 전기화 약 1.7조원 등</p>
+                </div>
+                <div class="chart-container" style="height:280px; max-width: 400px;">
+                    <canvas id="mergerSynergyChart"></canvas>
+                </div>
+            </div>
+            <h3 class="text-xl font-semibold mt-8 mb-4 text-[#073B4C]">주요 통합 과제 및 전략</h3>
+            <ul class="list-none space-y-3">
+                <li class="flex items-start"><span class="text-[#118AB2] mr-2 text-xl">▹</span><div><strong class="text-[#118AB2]">조직 문화 통합:</strong> 이질적 문화 융합 및 시너지 창출형 통합 문화 구축.</div></li>
+                <li class="flex items-start"><span class="text-[#118AB2] mr-2 text-xl">▹</span><div><strong class="text-[#118AB2]">투자 우선순위 조정:</strong> 다각화된 포트폴리오 내 효율적 자원 배분.</div></li>
+                <li class="flex items-start"><span class="text-[#118AB2] mr-2 text-xl">▹</span><div><strong class="text-[#118AB2]">시너지 목표 달성:</strong> 구체적 실행 계획 및 성과 관리 체계 확립.</div></li>
+                <li class="flex items-start"><span class="text-[#118AB2] mr-2 text-xl">▹</span><div><strong class="text-[#118AB2]">재무 건전성 확보:</strong> 합병 후 부채 관리 및 금융 안정성 유지.</div></li>
+            </ul>
+            <p class="mt-6 text-sm text-gray-700">SK E&S 합병은 SK이노베이션의 미래 성장 동력 확보와 재무 구조 개선에 중요한 기회이지만, 성공적인 통합(PMI)과 시너지 실현을 위한 철저한 실행 관리가 필수적입니다. (출처: 보고서 IV.A, IV.B, IV.C)</p>
+        </section>
+
+        <section id="sk-on-analysis" class="card">
+            <h2 class="text-2xl font-bold section-title">SK온 심층 분석: 도전과 기회</h2>
+            <p class="mb-6 text-md">SK온은 SK이노베이션의 핵심 성장 동력이지만, 현재 심각한 재무 및 운영상의 도전에 직면해 있습니다. 지속적인 영업손실, 대규모 설비투자(CAPEX)로 인한 자금 부담, 치열한 시장 경쟁이 주요 과제입니다. 그럼에도 높은 수주잔고, 기술력, 북미 시장 성장 잠재력 등은 긍정적 요소입니다.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="chart-container">
+                    <canvas id="skOnLossChart"></canvas>
+                    <p class="text-center text-sm mt-2 text-gray-600">SK온 연도별/분기별 영업손실 추이</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="skOnCapexChart"></canvas>
+                    <p class="text-center text-sm mt-2 text-gray-600">SK온 연도별 설비투자(CAPEX) 계획</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center mb-6">
+                <div>
+                    <p class="kpi-value text-[#FF6B6B]">(0.30조원)</p>
+                    <p class="kpi-label">2025년 1분기 영업손실</p>
+                </div>
+                <div>
+                    <p class="kpi-value">~3.5조원</p>
+                    <p class="kpi-label">2025년 예상 CAPEX</p>
+                </div>
+                <div>
+                    <p class="kpi-value">>400조원</p>
+                    <p class="kpi-label">수주잔고 (2023년 말)</p>
+                </div>
+                 <div>
+                    <p class="kpi-value text-[#06D6A0]">1,708억원</p>
+                    <p class="kpi-label">美 IRA AMPC (2025 1Q)</p>
+                </div>
+            </div>
+            
+            <h3 class="text-xl font-semibold mt-6 mb-3 text-[#073B4C]">기술 경쟁력 및 R&D 로드맵 (전고체 배터리 중심)</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p class="font-semibold text-md text-[#118AB2]">현재 기술 포트폴리오</p>
+                    <p class="text-sm">하이니켈 NCM(주력), LFP(개발), 코발트 프리, SF급속충전, S-Pack(CTP)</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="font-semibold text-md text-[#118AB2]">2025년 (전고체)</p>
+                    <p class="text-sm">초기 시제품 생산 (파일럿 라인 가동)</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="font-semibold text-md text-[#118AB2]">2028년 (전고체)</p>
+                    <p class="text-sm">상용화 목표 (에너지밀도 930Wh/L 황화물계)</p>
+                </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-700">SK온은 NCM 기술 외 LFP, 전고체 배터리 등 포트폴리오 다각화를 추진 중입니다. 그러나 CATL 등 중국 경쟁사와의 기술 및 가격 경쟁, R&D 자금 조달은 여전히 큰 숙제입니다. (출처: 보고서 V.A, V.B)</p>
+        </section>
+
+        <section id="sk-on-turnaround" class="card">
+            <h2 class="text-2xl font-bold section-title">SK온 턴어라운드 전략 (2025년 하반기 흑자전환 목표)</h2>
+            <p class="mb-6 text-md">SK온은 2025년 하반기 흑자 전환을 목표로 강력한 턴어라운드 전략을 추진하고 있습니다. 핵심은 북미 시장 집중 공략, 신규 공장 안정화 및 효율성 극대화, 제품 포트폴리오 다각화, 그리고 지속적인 원가 혁신입니다. 미국 IRA AMPC 혜택은 북미 사업 수익성 개선에 중요한 역할을 할 것입니다.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border-2 border-[#06D6A0] p-4 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-semibold text-[#073B4C] mb-2">🚀 북미 시장 집중</h3>
+                    <p class="text-sm">IRA AMPC 혜택 극대화, 포드/현대차 JV 중심 생산 확대. 신규 수주 확보 노력.</p>
+                </div>
+                <div class="border-2 border-[#FFD166] p-4 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-semibold text-[#073B4C] mb-2">⚙️ 운영 효율화 및 원가 절감</h3>
+                    <p class="text-sm">글로벌 공장 수율 및 가동률 조기 안정화. 스마트 팩토리, 공정 혁신 통한 비용 절감.</p>
+                </div>
+                <div class="border-2 border-[#118AB2] p-4 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+                    <h3 class="text-lg font-semibold text-[#073B4C] mb-2">🔋 기술/제품 다각화</h3>
+                    <p class="text-sm">LFP 배터리 상용화, 각형/원통형 셀 개발 등 시장 수요 대응. 차세대 기술 리더십 확보.</p>
+                </div>
+            </div>
+            <p class="mt-8 font-semibold text-[#073B4C]">최근 SKTI, SK엔텀 합병 (2025년 2월) 기대 효과:</p>
+            <ul class="list-disc list-inside space-y-1 mt-2 text-sm">
+                <li>연간 약 5,000억원 EBITDA 증대</li>
+                <li>원소재 소싱 역량 강화 및 물류 효율화</li>
+                <li>재무구조 개선 및 모회사 의존도 감소</li>
+            </ul>
+            <p class="mt-6 text-sm text-gray-700">SK온의 턴어라운드는 전기차 시장 상황, 원자재 가격, 정책 변화 등 외부 요인과 내부 실행력에 크게 좌우됩니다. 신임 경영진의 리더십 하에 조직 문화 개선과 강력한 실행이 동반되어야 목표 달성이 가능할 것입니다. (출처: 보고서 V.C, V.D)</p>
+        </section>
+
+        <section id="debt-solution" class="card">
+            <h2 class="text-2xl font-bold section-title">SK이노베이션 연결 부채 문제 해결 방안</h2>
+            <p class="mb-6 text-md">SK이노베이션의 높은 부채 수준은 그룹 전체의 재무 안정성을 위협하는 핵심 요인입니다. 이를 해결하기 위해 자산 효율화 및 매각, 자본 확충, 영업 현금흐름 개선 등 다각적인 노력이 필요합니다. 특히 SK온의 성공적인 IPO는 장기적으로 부채 감축에 결정적인 역할을 할 수 있습니다.</p>
+            <h3 class="text-xl font-semibold mt-6 mb-4 text-[#073B4C]">부채 감축 및 재무구조 개선 실행 계획</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4 class="font-semibold text-lg text-[#FF6B6B]">단기 (6~12개월)</h4>
+                    <ul class="list-disc list-inside text-sm space-y-1 pl-4 mt-1">
+                        <li>비핵심 자산 매각 적극 추진 (화학, 해외 E&P 등)</li>
+                        <li>전 사업부문 비용 통제 강화</li>
+                        <li>SK온 생산 안정화 (수율/가동률 향상) 집중</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4 class="font-semibold text-lg text-[#FFD166]">중기 (1~3년)</h4>
+                    <ul class="list-disc list-inside text-sm space-y-1 pl-4 mt-1">
+                        <li>SK온 흑자 전환 달성 (2025년 하반기 BEP 목표)</li>
+                        <li>시장 상황 고려 SK온 프리IPO 투자 유치</li>
+                        <li>자산 매각 대금 활용 체계적 부채 상환</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h4 class="font-semibold text-lg text-[#06D6A0]">장기 (3년 이상)</h4>
+                    <ul class="list-disc list-inside text-sm space-y-1 pl-4 mt-1">
+                        <li>SK온 성공적 IPO 추진</li>
+                        <li>연결 부채비율 적정 수준 (예: 150% 미만) 관리</li>
+                        <li>안정적 재무 기반 위 미래 성장 투자 확대</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-700">궁극적으로는 SK온의 자생력 확보와 그룹 전체의 영업 현금흐름 개선이 가장 지속 가능한 부채 해결책입니다. 영구채 발행 등은 단기적 재무지표 관리에는 도움이 될 수 있으나, 근본적인 해결책은 아닙니다. (출처: 보고서 VI.B, VI.C)</p>
+        </section>
+
+        <section id="conclusion" class="card">
+            <h2 class="text-2xl font-bold section-title">결론: 주요 시사점 및 미래 전망</h2>
+            <p class="mb-4 text-md">SK이노베이션은 현재 중대한 전환기에 놓여 있습니다. SK온의 성공적인 턴어라운드가 그룹 전체의 미래를 좌우할 핵심 변수이며, "실행이 전부"라는 명제가 그 어느 때보다 중요합니다. 신임 경영진은 안정화와 혁신이라는 이중 과제를 안고 있으며, 단기적 생존과 장기적 성장 간의 균형을 맞추는 리더십이 요구됩니다.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                    <h3 class="text-xl font-semibold text-[#FF6B6B] mb-2">주요 도전 과제</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>SK온의 신속한 흑자 전환 및 지속 가능한 수익성 확보</li>
+                        <li>높은 수준의 그룹 연결 부채 감축</li>
+                        <li>SK E&S 합병 시너지의 실질적이고 조속한 구현</li>
+                        <li>변동성이 큰 외부 시장 환경(전기차 수요, 경쟁 심화, 정책 변화) 대응</li>
+                        <li>다각화된 기술 포트폴리오의 효율적 관리 및 R&D 투자 자금 확보</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                    <h3 class="text-xl font-semibold text-[#06D6A0] mb-2">성공을 위한 핵심 전략</h3>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>비핵심 자산 매각 등 과감한 포트폴리오 재조정</li>
+                        <li>엄격한 재무 규율 확립 및 투자 효율성 제고</li>
+                        <li>SK온 운영 탁월성 확보 (수율, 가동률, 원가경쟁력)</li>
+                        <li>북미 시장 중심 성장 전략 가속화 및 AMPC 혜택 활용</li>
+                        <li>차세대 배터리 기술(LFP, 전고체 등) 리더십 확보</li>
+                        <li>강력한 리더십 하의 조직 민첩성 및 성과 중심 문화 구축</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-6 text-sm text-gray-700">SK이노베이션이 제시된 전략들을 성공적으로 실행한다면, 현재의 위기를 극복하고 친환경 에너지 전환 분야의 글로벌 리더로 도약할 수 있을 것입니다. 그러나 SK온의 정상화가 지연될 경우, 그룹 전체의 재무 건전성과 성장 동력이 장기간 훼손될 위험도 존재합니다. 향후 1~2년간의 가시적인 성과가 SK이노베이션의 미래를 결정짓는 중요한 분수령이 될 것입니다. (출처: 보고서 VII.A, VII.B, VII.D)</p>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#073B4C] text-white text-center py-6 mt-8">
+        <p class="text-sm">&copy; 2025 SK이노베이션 전략 분석 인포그래픽.</p>
+        <p class="text-xs mt-1">본 자료는 제공된 "SK이노베이션 재무 상황 분석 및 개선 전략 보고서"에 기반하여 정보 제공 목적으로 제작되었으며, 투자 조언으로 해석되어서는 안 됩니다.</p>
+    </footer>
+
+    <script>
+        function wrapLabels(label, maxLength) {
+            if (typeof label !== 'string') {
+                return label; 
+            }
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            }
+            if (currentLine.trim().length > 0) {
+                 lines.push(currentLine.trim());
+            }
+            return lines.length > 0 ? lines : [label];
+        }
+
+        const defaultTooltipCallbacks = {
+            title: function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(' ');
+                } else {
+                  return label;
+                }
+            }
+        };
+
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: { family: "'Noto Sans KR', 'Inter', sans-serif", size: 11 },
+                        padding: 15,
+                        boxWidth: 12,
+                    }
+                },
+                tooltip: {
+                    callbacks: defaultTooltipCallbacks,
+                    bodyFont: { family: "'Noto Sans KR', 'Inter', sans-serif" },
+                    titleFont: { family: "'Noto Sans KR', 'Inter', sans-serif" }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { font: { family: "'Noto Sans KR', 'Inter', sans-serif", size: 10 } },
+                    grid: { display: false }
+                },
+                y: {
+                    ticks: { font: { family: "'Noto Sans KR', 'Inter', sans-serif", size: 10 } },
+                    grid: { color: '#e9ecef' }
+                }
+            }
+        };
+        
+        const skiRevenueProfitCtx = document.getElementById('skiRevenueProfitChart').getContext('2d');
+        new Chart(skiRevenueProfitCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2022년', '2023년', '2024년', wrapLabels('2025년 1분기',10)],
+                datasets: [{
+                    label: '매출액 (조원)',
+                    data: [78.1, 77.3, 74.7, 21.1],
+                    backgroundColor: '#118AB2', 
+                    borderColor: '#073B4C',
+                    yAxisID: 'y',
+                    order: 2
+                }, {
+                    label: '영업이익 (조원)',
+                    data: [3.9, 1.9, 0.3, -0.0446], 
+                    backgroundColor: '#06D6A0',
+                    borderColor: '#073B4C',
+                    type: 'line',
+                    yAxisID: 'y1',
+                    order: 1,
+                    tension: 0.1,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#06D6A0'
+                }]
+            },
+            options: { ...commonChartOptions,
+                scales: {
+                    x: { ...commonChartOptions.scales.x, stacked: false },
+                    y: {
+                        type: 'linear', display: true, position: 'left',
+                        title: { display: true, text: '매출액 (조원)', font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10}, padding: {top: -5, bottom:5}},
+                        ticks: { font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10} }
+                    },
+                    y1: {
+                        type: 'linear', display: true, position: 'right',
+                        title: { display: true, text: '영업이익 (조원)', font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10}, padding: {top: -5, bottom:5}},
+                        grid: { drawOnChartArea: false },
+                        ticks: { font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10} }
+                    }
+                }
+            }
+        });
+
+        const skiDebtRatioCtx = document.getElementById('skiDebtRatioChart').getContext('2d');
+        new Chart(skiDebtRatioCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2022년', '2023년', '2024년', wrapLabels('2025년 1분기',10)],
+                datasets: [{
+                    label: '총부채 (조원)',
+                    data: [44.0, 50.8, 70.9, 75.4],
+                    backgroundColor: '#FF6B6B',
+                    borderColor: '#073B4C',
+                    yAxisID: 'y',
+                    order: 2
+                }, {
+                    label: '부채비율 (%)',
+                    data: [189.3, 169.3, 179.0, 206.6],
+                    borderColor: '#FFD166', 
+                    backgroundColor: 'rgba(255, 209, 102, 0.2)',
+                    type: 'line',
+                    yAxisID: 'y1',
+                    order: 1,
+                    tension: 0.1,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#FFD166',
+                    fill: true
+                }]
+            },
+             options: { ...commonChartOptions,
+                scales: {
+                    x: { ...commonChartOptions.scales.x, stacked: false },
+                    y: {
+                        type: 'linear', display: true, position: 'left',
+                        title: { display: true, text: '총부채 (조원)', font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10}, padding: {top: -5, bottom:5}},
+                        ticks: { font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10} }
+                    },
+                    y1: {
+                        type: 'linear', display: true, position: 'right',
+                        title: { display: true, text: '부채비율 (%)', font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10}, padding: {top: -5, bottom:5}},
+                        grid: { drawOnChartArea: false },
+                        ticks: { font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10} }
+                    }
+                }
+            }
+        });
+        
+        const segmentPerformanceCtx = document.getElementById('segmentPerformanceChart').getContext('2d');
+        const segmentRawLabels = ['윤활유', '석유개발(E&P)', 'E&S', '석유', '화학', wrapLabels('배터리(SK온)', 10)];
+        const segmentData = [121.4, 120.4, 193.1, 36.3, -114.3, -299.3];
+        new Chart(segmentPerformanceCtx, {
+            type: 'bar',
+            data: {
+                labels: segmentRawLabels.map(label => wrapLabels(label, 16)),
+                datasets: [{
+                    label: '영업이익/손실 (십억원)',
+                    data: segmentData,
+                    backgroundColor: segmentData.map(value => value >= 0 ? '#06D6A0' : '#FF6B6B'),
+                    borderColor: '#073B4C',
+                    borderWidth: 1
+                }]
+            },
+            options: { ...commonChartOptions, indexAxis: 'y',
+                 scales: {
+                    x: { ...commonChartOptions.scales.x, title: {display: true, text: '영업이익/손실 (십억원)', font: {family: "'Noto Sans KR', 'Inter', sans-serif", size:10}, padding: {top:5, bottom: -5}} },
+                    y: { ...commonChartOptions.scales.y, ticks: {...commonChartOptions.scales.y.ticks, autoSkip: false} }
+                }
+            }
+        });
+
+        const mergerSynergyCtx = document.getElementById('mergerSynergyChart').getContext('2d');
+        new Chart(mergerSynergyCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [wrapLabels('석유/가스 시너지 (0.5조원)', 16), wrapLabels('전기화 시너지 (1.7조원)', 16), wrapLabels('기타 시너지 (0.0조원+)',16)],
+                datasets: [{
+                    label: 'EBITDA 시너지 구성 (조원)',
+                    data: [0.5, 1.6, 0.1], 
+                    backgroundColor: ['#118AB2', '#06D6A0', '#FFD166'],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 3
+                }]
+            },
+            options: { ...commonChartOptions,
+                 plugins: {
+                    ...commonChartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: '목표 연간 EBITDA 시너지 구성 (2.1조원+)',
+                        font: { size: 12, family: "'Noto Sans KR', 'Inter', sans-serif"},
+                        padding: {top:5, bottom:10}
+                    },
+                    legend: { ...commonChartOptions.plugins.legend, position: 'right'}
+                }
+            }
+        });
+        
+        const skOnLossCtx = document.getElementById('skOnLossChart').getContext('2d');
+        new Chart(skOnLossCtx, {
+            type: 'line',
+            data: {
+                labels: ['2022년', '2023년', wrapLabels('2024년 3분기 (일시적)',12), wrapLabels('2025년 1분기',10)],
+                datasets: [{
+                    label: 'SK온 영업손실 (조원)',
+                    data: [-1.07, -0.58, 0.024, -0.2993], 
+                    borderColor: '#FF6B6B',
+                    backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                    fill: true,
+                    tension: 0.1,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#FF6B6B'
+                }]
+            },
+            options: { ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    title: {
+                        display: false
+                    }
+                },
+                scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        title: { display: true, text: '영업이익/손실 (조원)', font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10}, padding: {top: -5, bottom:5}},
+                    }
+                }
+            }
+        });
+
+        const skOnCapexCtx = document.getElementById('skOnCapexChart').getContext('2d');
+        new Chart(skOnCapexCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2023년', '2024년(E)', '2025년(E)'],
+                datasets: [{
+                    label: 'SK온 CAPEX (조원)',
+                    data: [6.79, 7.5, 3.5],
+                    backgroundColor: ['#FFD166', '#FFC300', '#FFAA00'],
+                    borderColor: '#073B4C',
+                    borderWidth: 1
+                }]
+            },
+            options: { ...commonChartOptions,
+                 plugins: {
+                    ...commonChartOptions.plugins,
+                    title: {
+                        display: false
+                    }
+                },
+                 scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        title: { display: true, text: 'CAPEX (조원)', font: { family: "'Noto Sans KR', 'Inter', sans-serif", size:10}, padding: {top: -5, bottom:5}},
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
+
